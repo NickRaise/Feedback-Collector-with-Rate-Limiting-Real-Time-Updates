@@ -5,6 +5,8 @@ const app = express();
 
 app.use(express.json());
 
+app.set("trust proxy", true);
+
 // User can only vote once every minute
 const voteLimitingMiddleware: RequestHandler = async (req, res, next) => {
   const ip = req.ip;
