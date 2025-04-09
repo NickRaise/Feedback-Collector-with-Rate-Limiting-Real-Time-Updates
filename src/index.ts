@@ -12,7 +12,7 @@ const voteLimitingMiddleware: RequestHandler = async (req, res, next) => {
   const key = `vote:${ip}`;
   const voteCount = await client.incr(key);
   if (voteCount == 1) {
-    client.expire(key, 60);
+    await client.expire(key, 60);
     next();
   } else {
     res.send("Voting too fast bro! wait for 1 min");
