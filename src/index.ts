@@ -5,6 +5,7 @@ const app = express();
 
 app.use(express.json());
 
+// This is to be used when the express server is sitting behind a proxy
 app.set("trust proxy", true);
 
 // User can only vote once every minute
